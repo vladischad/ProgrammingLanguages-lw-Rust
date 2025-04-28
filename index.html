@@ -1,0 +1,384 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Rust Programming Language</title>
+    
+<style>
+    body {
+        font-family: Times New Roman, serif;
+        font-size: 18px;
+        line-height: 1.5;
+        background-color: #f08585;
+        color: #333;
+    }
+
+    .code-box {
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 8px;
+        font-family: 'Courier New', monospace;
+        font-size: 18px;
+        margin: 20px;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    pre {
+        background-color: #eee;
+        padding: 10px;
+        overflow-x: auto;
+        font-size: 18px;
+    }
+
+    .black_box {
+        background-color: #000;
+        color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        font-family: 'Courier New', monospace;
+        font-size: 18px;
+    }
+
+    h1 {
+        font-size: 36px;
+        text-align: center;
+        font-family: 'Courier New', monospace;
+        color: #381805;
+        text-transform: uppercase;
+        border: 2px dotted #381805;
+    }
+
+    h2 {
+        text-align: center;
+        font-family: 'Courier New', monospace;
+        font-size: 28px;
+    }
+
+    h3 {
+        font-size: 24px;
+    }
+
+    .rust-img {
+        display: block;
+        margin: 0 auto;
+        width: 200px;
+        height: auto;
+    }
+
+    table {
+        font-size: 18px;
+    }
+
+    td, th {
+        padding: 10px;
+    }
+
+    ul, li {
+        font-size: 18px;
+    }
+</style>
+
+</head>
+
+
+<body style="font-family: Times New Roman, serif; line-height: 1.5; background-color: #f08585; color: #333;">
+    <h1
+        style="border: 2px dotted #381805; text-align: center; font-family: 'Courier New', monospace;  color: #381805; text-transform: uppercase;">
+        Rust Programming Language</h1>
+    <h2>By: Vlad Maliutin, Georgia Henson, Tiernan Benner, Evan Lauer </h2>
+    <img src="https://static-00.iconduck.com/assets.00/rust-icon-2048x2048-lfzjbuc7.png" alt="Rust Logo"
+        class="rust-img">
+
+
+    
+<section style="text-align: center;">
+    <h2>Introduction and History</h2>
+
+    <h3>Origins: A Passion Project (2006)</h3>
+    <p>Rust began as a personal project by Graydon Hoare in 2006. Working independently, he sought to create a language that combined the control and performance of C++ with better safety guarantees. His goal was to address common issues like memory errors and concurrency bugs without relying on a garbage collector, which can introduce runtime overhead.</p>
+
+    <h3>Mozilla's Sponsorship (2009)</h3>
+    <p>Recognizing the potential of Rust, Mozilla began sponsoring the project in 2009. Rust moved from a personal experiment to an officially backed initiative within Mozilla Research. Over the next few years, a team of contributors helped refine Rust's concepts, and Mozilla positioned it as a core tool to build safer and faster web technologies.</p>
+
+    <h3>Major Advancements</h3>
+    <ul style="list-style-type: none;">
+        <li><strong>2010:</strong> First public release of Rust's early prototype.</li>
+        <li><strong>2012:</strong> Servo, an experimental browser engine written in Rust, was started by Mozilla, showcasing Rust's concurrency and safety features.</li>
+        <li><strong>2015:</strong> Release of Rust 1.0, the first stable version of the language — marking Rust’s commitment to long-term stability for its users.</li>
+        <li><strong>2018:</strong> Major improvements with Rust 2018 Edition, adding features like async/await syntax and a smoother developer experience.</li>
+        <li><strong>2021:</strong> Formation of the independent Rust Foundation to steward the language’s future development, funded by companies like AWS, Google, Microsoft, and Mozilla.</li>
+    </ul>
+
+    <h3>Key Features</h3>
+    <ul style="list-style-type: disc; text-align: left; margin-left: 30%;">
+        <li><strong>Memory Safety Without Garbage Collection:</strong> Rust uses a unique ownership system that enforces safety at compile-time without needing a garbage collector.</li>
+        <li><strong>Fearless Concurrency:</strong> The language design makes writing multi-threaded programs easier and safer, avoiding data races.</li>
+        <li><strong>Performance:</strong> Rust programs are typically as fast as C and C++ programs due to low-level control over memory and computation.</li>
+        <li><strong>Rich Type System and Pattern Matching:</strong> These features make programs more expressive and robust.</li>
+        <li><strong>Friendly Tooling:</strong> Tools like Cargo (package manager and build system) and Rust Analyzer make development smooth and accessible.</li>
+    </ul>
+
+    <h3>How Rust is Used Today</h3>
+    <ul style="list-style-type: disc; text-align: left; margin-left: 30%;">
+        <li><strong>Systems Programming:</strong> Used in operating system kernels, file systems, and browser engines (e.g., Servo and parts of Firefox).</li>
+        <li><strong>Web Development:</strong> Frameworks like Rocket and Actix Web allow for building high-performance web servers and APIs.</li>
+        <li><strong>Cloud and Embedded Systems:</strong> Companies like Amazon use Rust for cloud services, and it’s gaining adoption in embedded systems for its safety guarantees.</li>
+        <li><strong>Blockchain Development:</strong> Many blockchain projects, including parts of Solana and Polkadot, use Rust for their core infrastructure.</li>
+        <li><strong>Tooling and Developer Utilities:</strong> Popular tools like ripgrep (a search tool) and exa (a modern `ls` replacement) are built with Rust.</li>
+    </ul>
+
+    <h3>Growing Popularity</h3>
+    <p>Since 2016, Rust has consistently been voted the "Most Loved Programming Language" in Stack Overflow’s annual Developer Surveys. Developers praise its focus on reliability, performance, and developer experience, despite its steep initial learning curve.</p>
+
+    <h3>Community and Open Governance</h3>
+    <p>Rust is now managed by the Rust Foundation, ensuring that it remains a community-driven and openly governed project. Contributions come from individuals and companies worldwide, making Rust one of the most collaboratively developed modern languages.</p>
+</section>
+
+
+
+    <section style="text-align: center;">
+        <h2>Installation Instructions</h2>
+        <pre>
+        <p>For Linux/OS</p>
+        <div class = "black_box">
+        $ curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
+        </div>
+        Then, follow the on-screen instructions to install Rust.
+        After installing, run <pre><code>rustc --version</code></pre> to verify.</pre>
+
+        <pre>
+            <p>For Windows</p>
+            <div class = "black_box">
+            Download the <strong>RUSTUP</strong> installer from the <a href="https://www.rust-lang.org/tools/install">official Site</a> and run it. You can download it to use in VScode, or 
+            you will be prompted to install the C++ Build Tools.
+            </div>
+        </pre>
+
+
+        <pre><code>
+            <p>For VS Code</p>
+            <div class = "black_box">
+            Install the Rust Analyzer extension for syntax highlighting, autocomplete, and more.
+            </div>
+        </code></pre>
+    </section>
+
+    <h2 style="text-align: center;">Basic Examples</h2>
+    <div class="container">
+        <section class="code-box">
+            <h2>Basic Examples</h2>
+            <h3>Hello, World</h3>
+            <pre><code>fn main() {
+          println!("Hello, world!");
+      }</code></pre>
+            <p><strong>Build/Run:</strong></p>
+            <pre><code>rustc main.rs
+      ./main</code></pre>
+        </section>
+
+
+        <section class="code-box">
+            <h2>Fibonacci Generator</h2>
+            <pre><code>fn fib(n: u32) -> u32 {
+              match n {
+                  0 => 0,
+                  1 => 1,
+                  _ => fib(n - 1) + fib(n - 2),
+              }
+            }<p>fn main() {
+              let n = 10;
+              println!("fib({}) = {}", n, fib(n));
+          }
+        </p>
+            </code></pre>
+            <strong>Build/Run:</strong>
+            <pre><code>rustc main.rs
+          ./main
+            </code></pre>
+        </section>
+
+        <section class="code-box">
+            <h2>Looping Through List</h2>
+            <pre><code>fn main() {
+              let list = vec![1, 2, 3, 4, 5];
+              for number in &list {
+                  println!("{}", number);
+              }
+            }</code></pre>
+            <strong>Build/Run:</strong>
+            <pre><code>rustc main.rs
+            ./main</code></pre>
+        </section>
+
+        <section class="code-box">
+            <h2>Simple Struct</h2>
+            <pre><code>struct Student {
+                    name: String,
+                    age: u32,
+                    grade: char,
+                }
+            <p>fn main() {
+                    let student = Student {
+                        name: String::from("Basic name"),
+                        age: 20,
+                        grade: 'F',
+                    };
+                }</p>
+            </code></pre>
+            <strong>Build/Run:</strong>
+            <pre><code>rustc main.rs
+            ./main</code></pre>
+        </section>
+
+
+    </div>
+
+    <div class="container">
+        <section class="code-box" style="width: 100%; background-color: bisque;">
+            <h2>Advanced Example</h2>
+
+            <div class="container">
+                </code></pre>
+        </section>
+        <section class="code-box">
+            <h2>Calculator</h2>
+            <pre><code>fn add(a: i32, b: i32) -> i32 {
+              a + b
+            }
+
+            fn subtract(a: i32, b: i32) -> i32 {
+              a - b
+            }
+
+            fn multiply(a: i32, b: i32) -> i32 {
+              a * b
+            }
+
+            fn divide(a: i32, b: i32) -> f64 {
+              a as f64 / b as f64
+            }
+            <p>fn main() {
+              let a = 10;
+              let b = 5;
+              println!("{} + {} = {}", a, b, add(a, b));
+              println!("{} - {} = {}", a, b, subtract(a, b));
+              println!("{} * {} = {}", a, b, multiply(a, b));
+              println!("{} / {} = {}", a, b, divide(a, b));
+            }</code></pre>
+            </p>
+            <strong>Build/Run:</strong>
+            <pre><code>rustc main.rs
+          ./main</code></pre>
+        </section>
+
+        <section class="code-box">
+            <h2>Use of Generics</h2>
+            <pre><code>trait Shape {
+                    fn area(&self) -> f64;
+                }
+                <p>struct Circle {
+                    radius: f64,
+                }</p>
+                <p>struct Rectangle {
+                    width: f64,
+                    height: f64,
+                }</p>
+                 <p>impl Shape for Circle {
+                    fn area(&self) -> f64 {
+                        std::f64::consts::PI * self.radius * self.radius
+                    }
+                }</p>
+                <p>impl Shape for Rectangle {
+                    fn area(&self) -> f64 {
+                        self.width * self.height
+                    }
+                }</p>
+                
+                <p>fn print_area<T: Shape>(shape: &T) {
+                    println!("Area: {}", shape.area());
+                }</p>
+                
+            <p>fn main() {
+                    let c = Circle { radius: 5.0 };
+                    let r = Rectangle { width: 4.0, height: 6.0 };
+                
+                    print_area(&c);
+                    print_area(&r);
+                </p>}
+            </code></pre>
+        </section>
+
+    </div>
+
+    <section>
+        <h2>Documentation and Resources</h2>
+        <ul>
+            <li><a href="https://www.rust-lang.org/">Official Site</a></li>
+            <li><a href="https://doc.rust-lang.org/book/">The Rust Book</a></li>
+            <li><a href="https://doc.rust-lang.org/std/">API Documentation</a></li>
+            <li><a href="https://play.rust-lang.org/">Playground</a></li>
+        </ul>
+    </section>
+
+
+    <section>
+        <h2 style="text-align: center;">Comparison Table</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Rust</th>
+                    <th>C++</th>
+                    <th>Go</th>
+                    <th>C</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Memory allocate and deallocate</td>
+                    <td>No garbage collector</td>
+                    <td>Manually allocate and deallocate memory</td>
+                    <td>Garbage collector</td>
+                    <td>Manually allocate and deallocate memory "malloc/free"</td>
+                </tr>
+                <tr>
+                    <td>Memory safety</td>
+                    <td>The compiler checks everything, but memory is handled by user</td>
+                    <td>Manual memory management, tools exist to assist user</td>
+                    <td>Uses the garbage collector, protects user from errors</td>
+                    <td>No safety built in, user must avoid mistakes</td>
+                </tr>
+                <tr>
+                    <td>Speed</td>
+                    <td>High - Memory allows for better performance</td>
+                    <td>High - Low-level, direct instructions to machine</td>
+                    <td>Medium - Memory management, slower than the rest</td>
+                    <td>Highest - Very low-level, no safety features</td>
+                </tr>
+                <tr>
+                    <td>Syntax Simplicity</td>
+                    <td>Modern syntax, strict rules can be confusing (owning and borrowing)</td>
+                    <td>More complex syntax, different styles with different ways to do the same thing</td>
+                    <td>Very easy to read, minimalistic</td>
+                    <td>Easy to read, complexity comes with memory managing and pointers</td>
+                </tr>
+
+                <tr>
+                    <td>Error handling</td>
+                    <td>Result/Option - explicitly deal with errors</td>
+                    <td>Exceptions, error codes, try-catch</td>
+                    <td>Simple explicit error handling</td>
+                    <td>"errno" or error codes</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </section>
+    </div>
+</body>
+
+
+</html>
